@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import ProjectManager from "@/components/ProjectManager";
 
 const EMAIL = "namraalie048@gmail.com";
 const GITHUB = "https://github.com/namraali2011";
@@ -45,39 +46,6 @@ const expertise = [
     skills: ["HTML", "CSS", "Next.js", "Git"],
     symbol: "⌘",
     color: "peach",
-  },
-];
-
-const projects = [
-  {
-    number: "01",
-    category: "NATURAL LANGUAGE PROCESSING",
-    title: "AI-Based Twitter Sentiment Analysis",
-    description:
-      "My undergraduate thesis explored how machine learning can be used to analyse sentiment in social media text, including data preprocessing and classification.",
-    tags: ["Python", "NLP", "Machine Learning"],
-    background: "lavender",
-    label: "UNDERGRADUATE THESIS",
-  },
-  {
-    number: "02",
-    category: "PREDICTIVE MACHINE LEARNING",
-    title: "Heart Disease Detection System",
-    description:
-      "A Samsung Innovation Campus capstone exploring predictive classification using health-related data and machine learning techniques.",
-    tags: ["Python", "Prediction", "Data"],
-    background: "mint",
-    label: "AI CAPSTONE",
-  },
-  {
-    number: "03",
-    category: "CONVERSATIONAL AI",
-    title: "Chatbot Development Exploration",
-    description:
-      "An ongoing learning project exploring conversational interfaces, Python-based chatbots, AI integrations and the design of useful digital assistants.",
-    tags: ["Chatbots", "Python", "AI APIs"],
-    background: "peach",
-    label: "IN PROGRESS",
   },
 ];
 
@@ -184,7 +152,6 @@ function HeroVisual() {
       aria-hidden="true"
       className="hero-canvas relative mx-auto h-[390px] w-full max-w-[540px] sm:h-[480px] lg:h-[580px]"
     >
-      {/* Large architectural background */}
       <div className="absolute inset-[8%] rounded-[45%] bg-[#ece9ff] blur-[65px]" />
 
       <div className="hero-float absolute left-[13%] top-[12%] h-[78%] w-[74%]">
@@ -197,14 +164,15 @@ function HeroVisual() {
           className="relative h-full w-full overflow-visible"
         >
           <defs>
-            <linearGradient id="orbitGradient" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient
+              id="orbitGradient"
+              x1="0"
+              y1="0"
+              x2="1"
+              y2="1"
+            >
               <stop offset="0%" stopColor="#8b72ff" />
               <stop offset="100%" stopColor="#4931bb" />
-            </linearGradient>
-
-            <linearGradient id="nodeGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#b8aaff" />
-              <stop offset="100%" stopColor="#6751d7" />
             </linearGradient>
 
             <filter id="nodeShadow">
@@ -266,10 +234,12 @@ function HeroVisual() {
             d="M200 93 L291 146 L200 200 L109 146 Z"
             fill="#a697ff"
           />
+
           <path
             d="M109 146 L200 200 L200 305 L109 251 Z"
             fill="#5844bd"
           />
+
           <path
             d="M291 146 L200 200 L200 305 L291 251 Z"
             fill="#7863de"
@@ -310,25 +280,28 @@ function HeroVisual() {
         </svg>
       </div>
 
-      {/* Floating dashboard card */}
+      {/* Data Insights Floating Card */}
       <div className="hero-float-delayed absolute left-0 top-[18%] w-[175px] rounded-[22px] border border-white bg-white/95 p-4 shadow-[0_22px_65px_rgba(69,54,139,0.13)] sm:w-[205px] sm:p-5">
         <div className="mb-4 flex items-center justify-between">
           <span className="text-[10px] font-extrabold tracking-widest text-slate-400">
             DATA INSIGHTS
           </span>
+
           <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
             ↗
           </span>
         </div>
 
         <div className="flex h-16 items-end gap-2">
-          {[30, 48, 38, 65, 52, 78, 90].map((height, i) => (
-            <div
-              key={i}
-              className="flex-1 rounded-t-md bg-gradient-to-t from-[#795de5] to-[#b0a3ff]"
-              style={{ height: `${height}%` }}
-            />
-          ))}
+          {[30, 48, 38, 65, 52, 78, 90].map(
+            (height, i) => (
+              <div
+                key={i}
+                className="flex-1 rounded-t-md bg-gradient-to-t from-[#795de5] to-[#b0a3ff]"
+                style={{ height: `${height}%` }}
+              />
+            )
+          )}
         </div>
 
         <p className="mt-3 text-xs font-bold text-[#1a2440]">
@@ -336,16 +309,18 @@ function HeroVisual() {
         </p>
       </div>
 
-      {/* Floating chatbot */}
+      {/* AI Assistant Floating Card */}
       <div className="hero-float absolute bottom-[13%] right-0 w-[200px] rounded-[22px] border border-white bg-white/95 p-4 shadow-[0_25px_65px_rgba(69,54,139,0.13)] sm:w-[235px] sm:p-5">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e8e3ff] text-[#6a53ce]">
             ✳
           </div>
+
           <div>
             <p className="text-xs font-extrabold text-[#18233d]">
               AI Assistant
             </p>
+
             <p className="mt-0.5 text-[10px] text-emerald-600">
               ● Exploring possibilities
             </p>
@@ -373,121 +348,24 @@ function HeroVisual() {
   );
 }
 
-function ProjectVisual({
-  type,
-}: {
-  type: "lavender" | "mint" | "peach";
-}) {
-  if (type === "lavender") {
-    return (
-      <div
-        aria-hidden="true"
-        className="relative flex h-64 items-center justify-center overflow-hidden bg-[#eeebff] sm:h-72"
-      >
-        <div className="absolute h-64 w-64 rounded-full border border-[#c8bef9]" />
-        <div className="absolute h-44 w-44 rounded-full border border-dashed border-[#b4a6f3]" />
-        <div className="relative flex h-36 w-52 -rotate-6 flex-col rounded-2xl border border-white bg-white p-5 shadow-[0_20px_50px_rgba(99,76,190,0.18)] transition-transform duration-500 group-hover:rotate-0">
-          <div className="mb-4 flex gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-rose-300" />
-            <span className="h-2 w-2 rounded-full bg-amber-300" />
-            <span className="h-2 w-2 rounded-full bg-emerald-300" />
-          </div>
-          <div className="space-y-3">
-            <div className="h-2 w-4/5 rounded bg-[#c2b7fb]" />
-            <div className="h-2 w-3/5 rounded bg-[#e4dfff]" />
-            <div className="h-2 w-2/3 rounded bg-[#d1c8fa]" />
-          </div>
-          <div className="absolute -bottom-5 -right-5 rounded-xl bg-[#7257e8] px-5 py-3 text-xs font-bold text-white shadow-xl">
-            Sentiment: Positive ✦
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (type === "mint") {
-    return (
-      <div
-        aria-hidden="true"
-        className="relative flex h-64 items-center justify-center overflow-hidden bg-[#e6f8ef] sm:h-72"
-      >
-        <div className="absolute h-60 w-60 rounded-full border border-[#a8e9cf]" />
-        <div className="absolute h-44 w-44 rounded-full border border-dashed border-[#8bdcbf]" />
-
-        <div className="relative flex h-36 w-48 rotate-6 flex-col items-center justify-center rounded-2xl border border-white bg-white shadow-[0_20px_50px_rgba(21,128,99,0.13)] transition-transform duration-500 group-hover:rotate-0">
-          <svg
-            width="140"
-            height="78"
-            viewBox="0 0 140 78"
-            fill="none"
-          >
-            <path
-              d="M8 39H30L44 19L59 61L73 30L84 42H132"
-              stroke="#20ad80"
-              strokeWidth="5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <p className="text-xs font-bold text-[#247e62]">
-            Predictive Modelling
-          </p>
-        </div>
-
-        <div className="absolute bottom-9 right-[11%] rounded-xl bg-[#16a57a] px-4 py-2 text-xs font-bold text-white shadow-lg">
-          AI / ML
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      aria-hidden="true"
-      className="relative flex h-64 items-center justify-center overflow-hidden bg-[#fff0e8] sm:h-72"
-    >
-      <div className="absolute h-60 w-60 rounded-full border border-[#f2d3c4]" />
-      <div className="absolute h-44 w-44 rounded-full border border-dashed border-[#f1c2ad]" />
-
-      <div className="relative w-52 -rotate-6 rounded-2xl border border-white bg-white p-5 shadow-[0_20px_50px_rgba(181,110,73,0.13)] transition-transform duration-500 group-hover:rotate-0">
-        <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#f6e4ff] text-violet-600">
-            ✳
-          </div>
-          <span className="text-xs font-bold text-slate-800">
-            Chat Interface
-          </span>
-        </div>
-
-        <div className="mt-4 space-y-3">
-          <div className="ml-auto w-3/4 rounded-xl bg-[#eee9ff] p-3">
-            <div className="h-1.5 w-full rounded bg-violet-300" />
-            <div className="mt-2 h-1.5 w-2/3 rounded bg-violet-200" />
-          </div>
-          <div className="w-3/4 rounded-xl bg-[#e5f8ee] p-3">
-            <div className="h-1.5 w-full rounded bg-emerald-300" />
-            <div className="mt-2 h-1.5 w-4/5 rounded bg-emerald-200" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
     const subject = encodeURIComponent(
       `Portfolio enquiry from ${form.name}`
     );
+
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
     );
@@ -521,9 +399,11 @@ export default function Home() {
         }
 
         @keyframes hero-float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0);
           }
+
           50% {
             transform: translateY(-13px);
           }
@@ -534,6 +414,7 @@ export default function Home() {
             opacity: 0;
             transform: translateY(24px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
@@ -589,6 +470,7 @@ export default function Home() {
         }
       `}</style>
 
+      {/* Accessibility Skip Link */}
       <a
         href="#main"
         className="fixed left-4 top-3 z-[100] -translate-y-24 rounded-lg bg-[#7155ee] px-5 py-3 font-semibold text-white focus:translate-y-0"
@@ -612,7 +494,10 @@ export default function Home() {
             </span>
 
             <span className="text-[22px] font-extrabold tracking-[-0.065em] text-[#152039]">
-              namra<span className="text-[#7155ee]">ali.</span>
+              namra
+              <span className="text-[#7155ee]">
+                ali.
+              </span>
             </span>
           </a>
 
@@ -638,7 +523,9 @@ export default function Home() {
 
           <button
             type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={
+              menuOpen ? "Close menu" : "Open menu"
+            }
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -668,7 +555,7 @@ export default function Home() {
       </header>
 
       <main id="main">
-        {/* Hero */}
+        {/* Hero Section */}
         <section
           id="home"
           className="relative overflow-hidden bg-[#faf9f6]"
@@ -695,15 +582,18 @@ export default function Home() {
 
               <h2 className="mt-8 max-w-[650px] text-[clamp(1.45rem,2.3vw,2rem)] font-semibold leading-[1.36] tracking-[-0.035em] text-[#26304a]">
                 Exploring AI, understanding data,
-                <br className="hidden sm:block" /> and building what comes next.
+                <br className="hidden sm:block" />
+                and building what comes next.
               </h2>
 
               <p className="mt-6 max-w-[570px] text-[16px] leading-[1.95] text-[#607087]">
-                I'm an Information Technology graduate from the
-                University of Sargodha, interested in artificial
-                intelligence, data analytics, intelligent chatbots
-                and modern digital applications. I believe the
-                best way to learn technology is to build with it.
+                I'm an Information Technology graduate
+                from the University of Sargodha,
+                interested in artificial intelligence,
+                data analytics, intelligent chatbots
+                and modern digital applications.
+                I believe the best way to learn
+                technology is to build with it.
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -712,6 +602,7 @@ export default function Home() {
                   className="group inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-[#7155ee] px-8 text-sm font-bold text-white shadow-[0_13px_30px_rgba(113,85,238,0.19)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#5c41d6]"
                 >
                   Explore My Work
+
                   <span className="transition-transform group-hover:translate-x-1">
                     <Arrow diagonal />
                   </span>
@@ -731,6 +622,7 @@ export default function Home() {
                   <span className="h-2 w-2 rounded-full bg-[#7155ee]" />
                   SARGODHA, PAKISTAN
                 </span>
+
                 <span className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-[#36b88c]" />
                   LEARNING • EXPLORING • BUILDING
@@ -776,7 +668,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About */}
+        {/* About Section */}
         <section
           id="about"
           className="mx-auto max-w-[1320px] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
@@ -806,9 +698,10 @@ export default function Home() {
                     </h3>
 
                     <p className="mt-5 max-w-xs text-sm leading-7 text-[#625889]">
-                      A personal journey shaped by technology,
-                      creative problem-solving and a desire to
-                      understand intelligent systems.
+                      A personal journey shaped by
+                      technology, creative problem-solving
+                      and a desire to understand
+                      intelligent systems.
                     </p>
                   </div>
                 </div>
@@ -819,10 +712,12 @@ export default function Home() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-xl text-emerald-600">
                     ✦
                   </span>
+
                   <div>
                     <p className="text-sm font-extrabold text-[#18243e]">
                       University of Sargodha
                     </p>
+
                     <p className="mt-1 text-xs text-[#69758a]">
                       BS Information Technology
                     </p>
@@ -840,29 +735,33 @@ export default function Home() {
 
               <div className="space-y-6 text-[16px] leading-[1.95] text-[#5b6780]">
                 <p>
-                  My academic journey began with a Bachelor's
-                  degree in Information Technology from the
-                  University of Sargodha. During my studies,
+                  My academic journey began with a
+                  Bachelor's degree in Information
+                  Technology from the University of
+                  Sargodha. During my studies,
                   I gained experience with programming
-                  fundamentals, database systems, networking
-                  and software development.
+                  fundamentals, database systems,
+                  networking and software development.
                 </p>
 
                 <p>
-                  My interest in artificial intelligence grew
-                  while working on my undergraduate thesis
-                  involving Twitter sentiment analysis.
-                  Studying AI through Samsung Innovation Campus
-                  further encouraged me to explore Python,
-                  machine learning and predictive systems.
+                  My interest in artificial intelligence
+                  grew while working on my undergraduate
+                  thesis involving Twitter sentiment
+                  analysis. Studying AI through Samsung
+                  Innovation Campus further encouraged
+                  me to explore Python, machine learning
+                  and predictive systems.
                 </p>
 
                 <p>
-                  Today, I'm continuing to develop my knowledge
-                  of data analytics, conversational AI, chatbot
-                  development and modern web technologies.
-                  I enjoy combining technical skills with
-                  curiosity to create useful digital experiences.
+                  Today, I'm continuing to develop
+                  my knowledge of data analytics,
+                  conversational AI, chatbot development
+                  and modern web technologies.
+                  I enjoy combining technical skills
+                  with curiosity to create useful
+                  digital experiences.
                 </p>
               </div>
 
@@ -871,11 +770,14 @@ export default function Home() {
                   <div className="mb-4 text-2xl text-[#7155ee]">
                     ◈
                   </div>
+
                   <h3 className="text-base font-extrabold text-[#1c2942]">
                     Analytical Thinking
                   </h3>
+
                   <p className="mt-2 text-sm leading-7 text-[#69758a]">
-                    Exploring patterns, data and practical solutions.
+                    Exploring patterns, data
+                    and practical solutions.
                   </p>
                 </div>
 
@@ -883,11 +785,14 @@ export default function Home() {
                   <div className="mb-4 text-2xl text-emerald-600">
                     ✳
                   </div>
+
                   <h3 className="text-base font-extrabold text-[#1c2942]">
                     Continuous Learning
                   </h3>
+
                   <p className="mt-2 text-sm leading-7 text-[#69758a]">
-                    Building skills through study and experimentation.
+                    Building skills through
+                    study and experimentation.
                   </p>
                 </div>
               </div>
@@ -895,7 +800,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Expertise */}
+        {/* Expertise Section */}
         <section
           id="expertise"
           className="bg-[#f2f0fb] py-24 lg:py-32"
@@ -910,8 +815,9 @@ export default function Home() {
               />
 
               <p className="mb-16 max-w-[270px] text-sm leading-7 text-[#68738b]">
-                I see technology as a constantly evolving field.
-                Every new skill opens the door to another idea.
+                I see technology as a constantly
+                evolving field. Every new skill
+                opens the door to another idea.
               </p>
             </div>
 
@@ -973,82 +879,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects */}
+        {/* Dynamic Projects Section — NeonDB */}
         <section
           id="projects"
+          aria-labelledby="projects-heading"
           className="mx-auto max-w-[1320px] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
         >
-          <SectionIntro
-            eyebrow="MY PROJECTS"
-            title="Exploring ideas."
-            emphasis="Building knowledge."
-            description="Selected academic projects and ongoing experiments in artificial intelligence and software development."
-          />
-
-          <div className="grid gap-7 lg:grid-cols-3">
-            {projects.map((project) => (
-              <article
-                key={project.number}
-                className="premium-hover group flex flex-col overflow-hidden rounded-[28px] border border-[#eceaf1] bg-white shadow-[0_15px_40px_rgba(25,30,60,0.035)]"
-              >
-                <ProjectVisual
-                  type={
-                    project.background as
-                      | "lavender"
-                      | "mint"
-                      | "peach"
-                  }
-                />
-
-                <div className="flex flex-1 flex-col p-7 sm:p-8">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-extrabold tracking-[0.12em] text-[#7155ee]">
-                      {project.category}
-                    </span>
-
-                    <span className="font-mono text-xs text-[#a2a9b6]">
-                      / {project.number}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-5 text-[23px] font-semibold leading-tight tracking-[-0.045em] text-[#1b2640]">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-5 flex-1 text-sm leading-[1.9] text-[#68748a]">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-7 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-[#eae7f1] bg-[#faf9fc] px-3 py-1.5 text-[11px] font-bold text-[#646e83]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 flex items-center justify-between border-t border-[#efedf3] pt-6">
-                    <span className="text-xs font-bold text-[#798398]">
-                      {project.label}
-                    </span>
-
-                    <span
-                      aria-hidden="true"
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f1edff] text-[#7155ee] transition-transform group-hover:rotate-45"
-                    >
-                      <Arrow diagonal size={18} />
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
+          <div id="projects-heading">
+            <SectionIntro
+              eyebrow="MY PROJECTS"
+              title="Exploring ideas."
+              emphasis="Building knowledge."
+              description="A collection of academic projects and ongoing experiments in artificial intelligence and software development, dynamically managed with NeonDB PostgreSQL."
+            />
           </div>
+
+          {/* Fetch, Add, Edit and Delete via NeonDB API */}
+          <ProjectManager />
         </section>
 
-        {/* Learning and certifications */}
+        {/* Learning and Certifications */}
         <section
           id="learning"
           className="bg-[#f4f7f5] py-24 lg:py-32"
@@ -1122,7 +972,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Learning approach */}
+        {/* Learning Approach */}
         <section className="mx-auto max-w-[1320px] px-5 py-24 sm:px-8 lg:px-12">
           <div className="relative overflow-hidden rounded-[35px] bg-[#211b47] px-7 py-16 text-white sm:px-12 lg:px-20">
             <div
@@ -1139,25 +989,42 @@ export default function Home() {
                 <h2 className="mt-6 text-[clamp(2.5rem,4.5vw,4.4rem)] font-semibold leading-tight tracking-[-0.06em]">
                   Learn something.
                   <br />
+
                   <span className="font-serif italic font-normal text-[#bbaaff]">
                     Build something.
                   </span>
                 </h2>
 
                 <p className="mt-6 max-w-lg text-base leading-8 text-[#c7c2e1]">
-                  I believe meaningful technical growth comes
-                  from understanding ideas, experimenting with
-                  tools, making mistakes and improving through
-                  practice.
+                  I believe meaningful technical growth
+                  comes from understanding ideas,
+                  experimenting with tools, making mistakes
+                  and improving through practice.
                 </p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
-                  ["01", "Discover", "Explore a new idea."],
-                  ["02", "Understand", "Learn its foundations."],
-                  ["03", "Experiment", "Turn theory into practice."],
-                  ["04", "Improve", "Refine what I've built."],
+                  [
+                    "01",
+                    "Discover",
+                    "Explore a new idea.",
+                  ],
+                  [
+                    "02",
+                    "Understand",
+                    "Learn its foundations.",
+                  ],
+                  [
+                    "03",
+                    "Experiment",
+                    "Turn theory into practice.",
+                  ],
+                  [
+                    "04",
+                    "Improve",
+                    "Refine what I've built.",
+                  ],
                 ].map(([number, title, description]) => (
                   <div
                     key={number}
@@ -1166,9 +1033,11 @@ export default function Home() {
                     <span className="text-xs font-bold text-[#b9a7ff]">
                       {number}
                     </span>
+
                     <h3 className="mt-5 text-xl font-semibold">
                       {title}
                     </h3>
+
                     <p className="mt-2 text-sm text-[#c4beda]">
                       {description}
                     </p>
@@ -1179,7 +1048,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact */}
+        {/* Contact Section */}
         <section
           id="contact"
           className="mx-auto max-w-[1320px] px-5 pb-28 pt-12 sm:px-8 lg:px-12"
@@ -1192,6 +1061,7 @@ export default function Home() {
           />
 
           <div className="grid gap-6 lg:grid-cols-12">
+            {/* Contact Information */}
             <div className="relative overflow-hidden rounded-[28px] bg-[#eae5ff] p-8 sm:p-10 lg:col-span-5">
               <div
                 aria-hidden="true"
@@ -1210,9 +1080,10 @@ export default function Home() {
                 </h3>
 
                 <p className="mt-5 text-sm leading-8 text-[#665e88]">
-                  I'm interested in collaborations, technical
-                  learning opportunities and projects in artificial
-                  intelligence, analytics and software development.
+                  I'm interested in collaborations,
+                  technical learning opportunities
+                  and projects in artificial intelligence,
+                  analytics and software development.
                 </p>
 
                 <div className="mt-12 space-y-7">
@@ -1220,6 +1091,7 @@ export default function Home() {
                     <p className="text-[11px] font-bold tracking-widest text-[#796e9c]">
                       EMAIL
                     </p>
+
                     <a
                       href={`mailto:${EMAIL}`}
                       className="mt-2 block break-all text-base font-bold text-[#4f38b1] hover:underline"
@@ -1232,6 +1104,7 @@ export default function Home() {
                     <p className="text-[11px] font-bold tracking-widest text-[#796e9c]">
                       LOCATION
                     </p>
+
                     <p className="mt-2 text-sm font-semibold text-[#332957]">
                       Sargodha, Pakistan
                     </p>
@@ -1241,6 +1114,7 @@ export default function Home() {
                     <p className="text-[11px] font-bold tracking-widest text-[#796e9c]">
                       GITHUB
                     </p>
+
                     <a
                       href={GITHUB}
                       target="_blank"
@@ -1255,13 +1129,15 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Contact Form */}
             <div className="rounded-[28px] border border-[#ebe8f0] bg-white p-8 shadow-sm sm:p-10 lg:col-span-7">
               <h3 className="text-2xl font-semibold tracking-tight text-[#1c2942]">
                 Send a message
               </h3>
 
               <p className="mt-3 text-sm text-[#758197]">
-                Fill out the form and compose an email directly.
+                Fill out the form and compose
+                an email directly.
               </p>
 
               <form
@@ -1276,6 +1152,7 @@ export default function Home() {
                     >
                       Your Name *
                     </label>
+
                     <input
                       id="contact-name"
                       name="name"
@@ -1302,6 +1179,7 @@ export default function Home() {
                     >
                       Email Address *
                     </label>
+
                     <input
                       id="contact-email"
                       name="email"
@@ -1353,14 +1231,16 @@ export default function Home() {
                   className="group flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-[#7155ee] px-7 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#5c40d1] hover:shadow-lg hover:shadow-violet-200"
                 >
                   Compose Email
+
                   <span className="transition-transform group-hover:translate-x-1">
                     <Arrow diagonal />
                   </span>
                 </button>
 
                 <p className="text-center text-xs leading-6 text-[#8590a2]">
-                  Your email application will open with your message
-                  prepared. Review it there to send.
+                  Your email application will open with
+                  your message prepared. Review it there
+                  to send.
                 </p>
               </form>
             </div>
@@ -1377,12 +1257,16 @@ export default function Home() {
                 href="#home"
                 className="text-3xl font-extrabold tracking-[-0.07em]"
               >
-                namra<span className="text-[#ab96ff]">ali.</span>
+                namra
+                <span className="text-[#ab96ff]">
+                  ali.
+                </span>
               </a>
 
               <p className="mt-4 max-w-sm text-sm leading-7 text-[#b4aecb]">
-                Exploring artificial intelligence, understanding
-                data and building knowledge through curiosity.
+                Exploring artificial intelligence,
+                understanding data and building knowledge
+                through curiosity.
               </p>
             </div>
 
@@ -1416,7 +1300,7 @@ export default function Home() {
             </a>
 
             <p className="font-mono text-[11px] text-[#aaa5c0]">
-              MADE WITH NEXT.JS & TAILWIND CSS
+              NEXT.JS / TYPESCRIPT / NEONDB
             </p>
           </div>
         </div>
